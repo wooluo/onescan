@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "OneScan v1.0"
-echo "请严格遵守网络安全法，严禁在办公网进行漏洞扫描，亲~"
+echo "请严格遵守网络安全法，请对你的漏洞扫描行为负责，亲~"
 echo "例如输入子域名：vulnweb.com "
 read -t 10 -p "请输入要漏洞扫描的根域名：" url
 # echo "准备中..."
@@ -38,7 +38,6 @@ printf "\n"
 
 echo "子域名结果保存到当前文件夹内的 ur.txt"
 
-#echo "通过抓包或者查看浏览器，获得cookie，例如："Authorization: NjU4NDgzNTAwMDkwMDk2NDYwODo4MTM2NzQ2OTY4ODI0MTUyMDY0OjBiZDk2MzJmLTMxNzktMTFlYy04ZDk2LWNlZWY4MGNiMDM5Mw==""
 
 #read -t 10 -p "请输入要爬取根域名：" cookie
 printf "\n"

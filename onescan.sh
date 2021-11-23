@@ -43,4 +43,4 @@ echo "子域名结果保存到当前文件夹内的 ur.txt"
 printf "\n"
 printf "正在执行web漏洞扫描...稍候！"
 printf "\n"
-nuclei -l ur.txt |tee sec.txt
+./nuclei -l ur.txt |tee sec.txt

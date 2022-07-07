@@ -26,12 +26,12 @@ echo "***以下是找到的子域名："
 
 ./subfinder -d $url -silent | tee ./b.txt
 
-printf "\n"
-printf "正在扫描网站端口...稍后"
-printf "\n"
-./naabu -l b.txt |tee web-port.txt
+#printf "\n"
+#printf "正在扫描网站端口...稍后"
+#printf "\n"
+#./naabu -l b.txt |tee web-port.txt
 
-echo "网站扫描端口的结果保存到当前文件夹内的 web-prot.txt"
+#echo "网站扫描端口的结果保存到当前文件夹内的 web-prot.txt"
 
 #更改根域名，可以更改输出文件
 #./httpx -status-code -title -tech-detect -list b.txt |tee ./ur.txt

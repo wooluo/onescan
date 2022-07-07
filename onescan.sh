@@ -4,7 +4,7 @@ echo "OneScan v1.0"
 echo "请严格遵守网络安全法，请对你的漏洞扫描行为负责，亲~"
 echo "例如输入子域名：vulnweb.com "
 read -t 10 -p "请输入要漏洞扫描的根域名：" url
-# echo "准备中..."
+echo "准备中..."
 i=0
 str=""
 arr=("|" "/" "-" "\\")
@@ -26,6 +26,12 @@ echo "***以下是找到的子域名："
 
 ./subfinder -d $url -silent | tee ./b.txt
 
+printf "\n"
+printf "正在扫描网站端口...稍后"
+printf "\n"
+./naabu -l b.txt |tee web-port.txt
+
+echo "网站扫描端口的结果保存到当前文件夹内的 web-prot.txt"
 
 #更改根域名，可以更改输出文件
 #./httpx -status-code -title -tech-detect -list b.txt |tee ./ur.txt

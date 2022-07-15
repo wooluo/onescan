@@ -4,9 +4,9 @@ info:
   name: info
   author: wooluo
   severity: critical
-  description: 通过爬取leakix网站，来查询哪些IP存在ES泄露，可获取未授权访问的ES数据库
+  description: 通过爬取leakix网站，来查询哪些IP存在ES泄露，可获取未授权访问的ES数据库  nuclei -t /Users/x/info.yaml -u https://leakix.net
   reference: |
-    - //192.99.38.217:9200
+    - // https://leakix.net
   classification:
     cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
     cvss-score: 9.8
@@ -16,7 +16,7 @@ info:
 
 requests:
   - payloads:
-      target: /Users/wooluo/target.txt
+      target: /Users/x/target.txt
     threads: 40
     attack: clusterbomb
     raw:

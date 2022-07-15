@@ -35,7 +35,6 @@ requests:
         Pragma: no-cache
         Cache-Control: no-cache
         Te: trailers
-        Connection: 
    
 
     matchers-condition: and

@@ -1,0 +1,53 @@
+id: info
+
+info:
+  name: info
+  author: wooluo
+  severity: critical
+  description: 通过爬取leakix网站，来查询哪些IP存在ES泄露，可获取未授权访问的ES数据库
+  reference: |
+    - //192.99.38.217:9200
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+    cve-id: CVE-2019-0230
+    cwe-id: CWE-915
+  tags: info
+
+requests:
+  - payloads:
+      target: /Users/wooluo/target.txt
+    threads: 40
+    attack: clusterbomb
+    raw:
+      - |
+        GET /host/{{target}} HTTP/2
+        Host: {{Hostname}}
+        Cookie: LEAKIX_FLASH=; LEAKIX_SESSION=4fa3f5f797d4cb8cafb3f57171b703485ac3f144-%00_TS%3A1657940078%00%00csrf_token%3AxQMCxMuvwukXdzam3jxuacU3THF1S11wqSfVDkYRtOg%3D%00
+        User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0
+        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+        Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+        Accept-Encoding: gzip, deflate
+        Upgrade-Insecure-Requests: 1
+        Sec-Fetch-Dest: document
+        Sec-Fetch-Mode: navigate
+        Sec-Fetch-Site: cross-site
+        Pragma: no-cache
+        Cache-Control: no-cache
+        Te: trailers
+        Connection: 
+   
+
+    matchers-condition: and
+    matchers:
+      - type: regex
+        regex:
+          - "Severity"
+          - "Leak size"
+          - "Rows"
+        part: body
+
+      - type: status
+        status:
+          - 200
+

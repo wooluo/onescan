@@ -1,0 +1,39 @@
+id: scan-elasticsearch
+
+info:
+  name: scan-elasticsearch
+  author: wooluo
+  severity: critical
+  description: 通过爬取leakix网站，来查询哪些IP存在ES泄露，可获取未授权访问的ES数据库
+  reference: |
+    - //192.99.38.217:9200
+  classification:
+    cvss-metrics: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+    cvss-score: 9.8
+    cve-id: CVE-2022-0230
+    cwe-id: CWE-915
+  tags: info
+
+requests:
+  - payloads:
+      port: 
+        - 9200
+    threads: 5
+    attack: clusterbomb
+    raw:
+      - |
+        GET :{{port}} HTTP/2
+        Host: {{Hostname}}
+    matchers-condition: and
+    matchers:
+      - type: regex
+        regex:
+          - "You Know, for Search"
+          - "build_hash"
+          - "elasticsearch"
+          - "minimum_wire_compatibility_version"
+        part: body
+
+      - type: status
+        status:
+          - 200
